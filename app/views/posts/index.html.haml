@@ -1,7 +1,14 @@
-%p
-	Title:
-	= @post.title
+%h1 Listing posts
 
-%p
-	Text:
-	= @post.text
+%table
+	%tr
+		%th Title
+		%th Text
+
+	- @posts.each do |post|
+		%tr
+			%td= post.title 
+			%td= post.text
+
+%br
+= link_to 'New post', new_post_path
