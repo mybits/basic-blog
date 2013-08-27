@@ -9,6 +9,8 @@
 		%tr
 			%td= post.title 
 			%td= post.text
+			%td= link_to 'Show', post 			# błąd w tutorialu, było post_path
+			%td= link_to 'Edit', edit_post_path(post)
 
 %br
 = link_to 'New post', new_post_path
