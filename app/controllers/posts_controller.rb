@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	http_basic_authenticate_with name: 'me', password: 'onrails', except: [:index, :show] 
 
 	def index
 		@posts = Post.all
