@@ -5,3 +5,7 @@
 %p
 	%b Comment:
 	= comment.body
+
+%p
+	= link_to 'Delete Comment', [comment.post, comment],
+							method: :delete, data: { confirm: 'Are you sure?'}
