@@ -9,7 +9,7 @@
 		%tr
 			%td= post.title 
 			%td= post.text
-			%td= link_to 'Show', post 			# błąd w tutorialu, było post_path
+			%td= link_to 'Show', post 			# błąd w tutorialu, było post_path i nie działało
 			%td= link_to 'Edit', edit_post_path(post)
 			%td= link_to 'Delete', post_path(post), method: :delete,  data: { confirm: 'Are you sure?'}
 
