@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
+
 	http_basic_authenticate_with name: 'me', password: 'onrails', except: [:index, :show] 
+
+	before_action :set_post, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@posts = Post.all
@@ -20,16 +23,13 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@post = Post.find(params[:id])
 	end
 
 	def edit
-		@post = Post.find(params[:id])
 	end
 
 	def update
-		@post = Post.find(params[:id])
-
+		
 		if @post.update(post_params)
 			redirect_to @post, notice: 'Post was successfully updated.'
 		else
@@ -38,15 +38,17 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
 		@post.destroy
-
 		redirect_to posts_path
 	end
 
 
 
 	private
+		def set_post
+			@post = Post.find(params[:id])
+		end
+			
 		def post_params
 			params.require(:post).permit(:title, :text)
 		end
